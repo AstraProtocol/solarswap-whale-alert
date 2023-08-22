@@ -60,12 +60,10 @@ async function main() {
       }
       const message = `
 ========== [SWAP] ==========%0A
-ASA In: ${amount1InFmt}%0A
-USDT Out: ${amount0OutFmt}%0A
-----------------------------%0A
-USDT In: ${amount0InFmt}%0A
-ASA Out: ${amount1OutFmt}%0A
-----------------------------%0A
+${amount1InFmt > 0 ? `ASA In: ${amount1InFmt}%0A` : ""}
+${amount0OutFmt > 0 ? `USDT Out: ${amount0OutFmt}%0A----------------------------%0A` : ""}
+${amount0InFmt > 0 ? `USDT In: ${amount0InFmt}%0A` : ""}
+${amount1OutFmt > 0 ? `ASA Out: ${amount1OutFmt}%0A----------------------------%0A` : ""}
 from: ${tx.from}%0A
 to: ${txParse.args[getDestinationAddressIdx(txParse.name)]}%0A
 txHash: ${process.env.EXPLORER_URL}/tx/${event.transactionHash}
